@@ -49,16 +49,6 @@
       "comparison": "included",
       "timeout": 10,
       "points": 1
-    },
-    {
-      "name": "test coverage",
-      "setup": "",
-      "run": "pytest --cov-report term-missing --cov lab01 --cov-fail-under=100",
-      "input": "",
-      "output": "",
-      "comparison": "included",
-      "timeout": 10,
-      "points": 1
     }
   ]
 }

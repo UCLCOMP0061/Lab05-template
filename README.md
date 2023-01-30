@@ -1,9 +1,9 @@
 [<img alt="points bar" align="right" height="36" src="../../blob/badges/.github/badges/points-bar.svg" />
 <img alt="Workflow status" align="right" height="30" src="../../workflows/Autograding/badge.svg?branch=main" />](../../actions/workflows/classroom.yml)
 
-# COMP0061 -- Privacy Enhancing Technologies -- Lab 01
+# COMP0061 -- Privacy Enhancing Technologies -- Lab 0X
 
-This lab will introduce the basics of Petlib, encryption, signatures, and an end-to-end encryption system.
+This lab will introduce the basics of working with polynomials and their use for private set intersection
 
 ### Structure of Labs
 The structure of all the labs will be similar: two Python files will be provided. 
@@ -15,10 +15,8 @@ partially check your answers.
 Note that the tests passing is a necessary but not sufficient condition to fulfill each task.
 There are programs that would make the tests pass that would still be invalid (or blatantly insecure) implementations.
 
-The only dependency your Python code should have, besides Pytest and the standard library, is the Petlib library, 
-which was specifically developed for this course (and also for our own use!). 
-
-The petlib documentation is [available on-line here](http://petlib.readthedocs.org/en/latest/index.html).
+This lab departs from previous labs in that you are no longer expected to use Petlib.
+All tasks in this lab must be implemented in pure Python without the use of any additional libraries. 
 
 ### Checking out code
 
@@ -86,7 +84,7 @@ Have a look at the test file to find out the function names of each test.
 For example the following command executes the very first test of Lab 1:
 
 ```sh
-$ pytest -v -k test_petlib_present
+$ pytest -v -k test_polynomial_evaluation
 ```
 
 The full documentation of pytest is [available here](http://pytest.org/latest/).
@@ -103,176 +101,117 @@ time you push any changes to the `main` branch of your GitHub repository.
 The latest score from automarking should be shown in the Readme file.
 To see the test runs, look at the Actions tab in your GitHub repository.
 
-Make sure the submitted `lab01.py` file at least satisfies the tests, without the need for any external dependency 
-except the Python standard libraries and the Petlib library. 
+Make sure the submitted `lab0X.py` file at least satisfies the tests, without the need for any external dependency 
+except the Python standard libraries. 
 Only submissions prior to the GitHub Classroom deadline will be marked, so make sure you push your code in time.
 
 
 To re-iterate, the tests passing is a necessary but not sufficient condition to fulfill each task.
 All submissions will be checked by TAs for correctness and your final marks are based on their assessment of your work.  
 For full marks, make sure you have fully filled in any sections marked with `TODO` comments, including answering any
-questions in the comments of the `lab01.py`.
+questions in the comments of the `lab0X.py`.
 
-## TASK 1 -- Basic installation \[1 point\]
-> Ensure petlib is installed on the system
-> and also pytest. Ensure the lab code can 
-> be imported.
+## TASK 1 -- Evaluating a polynomial. \[1 point\]
+> Evaluate a polynomial P at value a modulus m.
+> For instance, 10 * x^3 + 7 * x + 8 evaluated at 2 is 102.
+> We define the polynomial as a vector that contains the polynomial's coefficients.
+> The polynomial 10 * x^3 + 7 * x + 8 can be represented as: P = [10, 0, 7, 8].
+> We will use this representation of polynomials for all tasks in the lab.
+
+**Important**: Do not use any library to calculate the sum of two polynomials.
 
 ### Hints
 - Execute the following command to ensure the tests run:
-
 ```sh
 $ pytest -v -m task1
 ```
-- If everything is installed correctly the two selected tests should both pass without a problem, and without any 
-modification to the code file.
-This first task is meant to ensure everything is installed properly.
-If it fails, let us know by tagging the TAs in a comment on your feedback pull request on GitHub.
+- The `pow` function takes an optional third argument.
+- Remember to work modulus m in your implementation!
 
-## TASK 2 -- Symmetric encryption using AES-GCM \[1 point\]
-> Implement encryption and decryption functions
-> that simply performs AES_GCM symmetric encryption
-> and decryption using the functions in `petlib.Cipher`.
+## TASK 2 -- Add two polynomials. \[1 point\]
+> To add two polynomials with vector representation P_1 and P_2, you can add the two vectors with each other
+> component-wise (i.e., i-th element in first vector is added with i-th vector in the second vector) in Z_m.
+> For example (ignoring the modulus for now):
+> (10 * x^3 + 7 * x + 8)+(2 * x^2 + 1) = 10 * x^3 + 2 * x^2 + 7 * x + 9
+> Just like in Task 1, we define each polynomial as a vector that contains the polynomial's coefficients.
+> The polynomials above can be represented as P_1 = [10, 0, 7, 8] and P_2 = [2, 0, 1].
+> Their product is equal to [10, 2, 7, 9] and can be calculated as:
+> [10, 0, 7, 8] + [0, 2, 0, 1].
 
-### Hints
-- This first task lets you explore how to use AES-GCM from petlib.
-You may run the tests for this task using:
-
-    ```sh
-    $ pytest -v -m task2
-    ```
-
-- Consider these imports:
-    ```python
-    from os import urandom
-    from petlib.cipher import Cipher
-    ```
-
-- Note that `urandom` produces cryptographically strong bytes, which is handy for keys and initialisation vectors.
-
-- The `petlib.cipher` package provides two handy functions `quick_gcm_enc` and `quick_gcm_dec` that will help you
-define the encryption and decryption functions.
-
-- The documentation for `petlib.cipher` is [available here](http://petlib.readthedocs.org/en/latest/index.html#module-petlib-cipher).
-
-
-## TASK 3 -- Understand Elliptic Curve Arithmetic \[1 point\]
-> - Test if a point is on a curve.
-> - Implement Point addition.
-> - Implement Point doubling.
-> - Implement Scalar multiplication (double & add).
-> - Implement Scalar multiplication (Montgomery ladder).
-> 
-> *Must not use any of the `petlib.ec` functions*. Only `petlib.Bn`!
+**Important**: Do not use any library to calculate the sum of two polynomials.
 
 ### Hints
-- The five (5) tests for this task run through:
+- Execute the following command to ensure the tests run:
+```sh
+$ pytest -v -m task2
+```
+- Remember to work modulus m in your implementation!
 
-    ```sh
-    $ pytest -v -m task3
-    ```
 
-- petlib.bn provides facilities to do fast computations on `big numbers`.
+## TASK 3 -- Multiply two polynomials. \[1 point\]
+> Compute the product (or multiplication) of two polynomials modulus m.
+> For example (ignoring the modulus for now):
+> (10 * x^3 + 7 * x + 8)*(2 * x^2 + 1) = 20 * x^5 + 24 * x^3 + 16 * x^2 + 7 * x + 8.
+> Just like in Task 1, we define each polynomial as a vector that contains the polynomial's coefficients.
+> The polynomials above can be represented as P_1 = [10, 0, 7, 8] and P_2 = [2, 0, 1].
+> Their product is equal to [20, 0, 24, 16, 7, 8] and can be calculated as:
+> 2 * [10, 0, 7, 8, 0, 0] + 0 * [0, 10, 0, 7, 8, 0] + 1 * [0, 0, 10, 0, 7, 8].
 
-    ```python
-    from petlib.bn import Bn
-    ```
-
-- The documentation of petlib.bn provides ample examples of the use of each function to manipulate big numbers.
-You can find it [here](http://petlib.readthedocs.org/en/latest/index.html#module-petlib-bn)
-
-- The documentation strings for each function provide guidance as to the algorithms you need to implement. 
-
-- The tests provide you some guidance as to the inputs and outputs expected by each function.
-
-- The lecture slides include the formulas for performing EC addition and doubling.
-Make use of them.
-
-- Note that the neutral element `(infinity)` is encoded in `(x, y)` coordinates as `(None, None)`.
-Make sure you handle this input correctly.
-Do you also output it correctly?
-
-## TASK 4 -- Standard ECDSA signatures \[1 point\]
-> - Implement a key / param generation 
-> - Implement ECDSA signature using `petlib.ecdsa`
-> - Implement ECDSA signature verification using `petlib.ecdsa`
+**Important**: Do not use any library to calculate the product of two polynomials.
 
 ### Hints
-
-- The tests for this task run through:
-
-    ```sh
-    $ pytest -v -m task4
-    ```
-
-- This task lets you practice generating and verifying digital signatures. This is a vital skill, even if you do not know how digital signature work (we will actually study what is inside them later in this course).
-
-- Note, that `petlib.ecdsa` provides both facilities to generate and verify signatures, as well as detailed documentation on how to use these. See `do_ecdsa_sign` and `do_ecdsa_verify`.
-
-    ```python
-    from hashlib import sha256
-    from petlib.ec import EcGroup
-    from petlib.ecdsa import do_ecdsa_sign, do_ecdsa_verify
-    ```
-
-- The documentation for `module-petlib-ecdsa` is [available here](http://petlib.readthedocs.org/en/latest/index.html#module-petlib-ecdsa).
-Do use it.
-
-- It is necessary to use a secure hash function to hash an input before signing or verifying it (self study: why is that?).
-Luckily, the hashlib Python library provides a number of secure hash functions, and a number of insecure ones (Question: which is which?).
+- Execute the following command to ensure the tests run:
+```sh
+$ pytest -v -m task3
+```
+- Remember to work modulus m in your implementation!
 
 
-## TASK 5 -- Diffie-Hellman Key Exchange and Derivation \[2 point: 1 point for DHKE and 1 point for test coverage\]
-> - use Bob's public key to derive a shared key.
-> - Use Bob's public key to encrypt a message.
-> - Use Bob's private key to decrypt the message.
+## TASK 4 -- Represent a set as a polynomial. \[1 point\]
+> Represent the set S of n elements as a polynomial P, such that the roots of P are the elements of the set S
+> Return the coefficients of the polynomial as a vector of coefficients modulus m.
+> For example, when S = [2, 3], then P = (x-2)*(x-3) = x^2 - 5 * x + 6 and the function returns [1, -5, 6]
+
+**Important**: Do not use any library to calculate the product of two polynomials.
 
 ### Hints
-- The tests for this task run through:
- 
-    ```
-    $ pytest -v -m task5
-    ```
-   
-- This time you may use the facilities in petlib.ec to implement an EC Diffie-Hellman exchange.
-The documentation [is here](http://petlib.readthedocs.org/en/latest/index.html#module-petlib-ec)
+- Execute the following command to ensure the tests run:
+```sh
+$ pytest -v -m task4
+```
+- Remember to work modulus m in your implementation!
+- You can make use of your `polynomial_multiplication` function.
 
-- Also: have a look at the provided key generation function to guide the remaining of the implementation.
 
-- This task requires you to implement a simple hybrid encryption scheme, guided by the scheme presented in the slides. 
-In a nutshell you may assume that Alice and Bob are aware of each other's public keys, and use those to eventually
-derive a shared key.
-This shared key is then passed through a key derivation function (what should you use for key derivation?) to obtain a 
-key for an AES-GCM cipher to protect the integrity and confidentiality of a message.
+## TASK 5 -- Compute the private set intersection. \[1 point\]
+> Bring everything together to compute the private intersection of two sets belonging to two parties, Alice 
+> and Bob, using polynomial representation modulus m.
+> Assume set A belongs to Alice and set B belongs to Bob.
+> Using the functions you created in the previous tasks you will need to follow these steps:
 
-- You may assume that the public key passed to `dh_encrypt` is the public encryption key of the recipient, and the 
-`alice_sig` parameter is the signature key of Alice the sender.
-Conversely, the `priv` parameter of `dh_encrypt` is the recipient's (Bob) secret decryption key and `alice_ver` a public
-verification key for a signature scheme.
 
-- As part of this task you MUST implement a number of tests to ensure that your code is correct.
-Stubs for 3 such tests are provided, namely `test_encrypt`, `test_decrypt` (which are self-explanatory), and 
-`test_fails` which is meant to check for conditions under which the decryption or signature verification must fail.
-At least these should be implemented in the code file, but feel free to implement more.
+1. represent A as a polynomial, say P_1
+2. generate a random polynomial, say R_1, with the same degree as P_1
+3. compute the product of P_1 and R_1 (i.e., P_1 * R_1)
+4. represent B as a polynomial, say P_2
+5. generate a random polynomial, say R_2, with the same degree as P_2
+6. compute the product of P_2 and R_2 (i.e., P_2 * R_2)
+7. compute Res = P_1 * R_1 + P_2 * R_2
+8. evaluate Res to obtain the set intersection of A and B
 
-- Your tests should run when you execute the following command, which produces a report on your test coverage.
-Ensure all lines of code are fully covered by the test regime!
 
-    ```
-    $ pytest --cov-report html --cov lab01
-    ```
-
-## TASK 6 -- Time EC scalar multiplication \[0 points\]
-> *Open Task - Optional*
-> 
-> Time your implementations of scalar multiplication
-> (use time.perf_counter_ns() for measurements) for different 
-> scalar sizes
+**Important**: Do not use any library to calculate the product of two polynomials.
 
 ### Hints
+- Execute the following command to ensure the tests run:
+```sh
+$ pytest -v -m task5
+```
+- Remember to work modulus m in your implementation!
+- Use the functions you implemented
 
-- If you are set on answering this question, you must time your execution of scalar multiplication to investigate timing
-side channels. 
 
-- Once you have observed timing channels that may leak secrets, go back and fix the scalar multiplication code to run in
-constant time.
+## TASK Q1  -- Answer the questions with reference to the protocol you implemented.  \[1 point\]
+
+- Please include the answer as part of the Code file submitted, as a multi-line string, where the `TODO` indicates.
+
