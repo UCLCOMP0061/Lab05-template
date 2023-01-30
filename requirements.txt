@@ -1,0 +1,3 @@
+git+https://github.com/gdanezis/petlib.git#7aafddb46f5e643c0a1addb1067acc3dc74ce59d
+pytest==7.2.0
+pytest-cov==4.0.0
