@@ -118,7 +118,7 @@ questions in the comments of the `lab0X.py`.
 > The polynomial 10 * x^3 + 7 * x + 8 can be represented as: P = [10, 0, 7, 8].
 > We will use this representation of polynomials for all tasks in the lab.
 
-**Important**: Do not use any library to calculate the sum of two polynomials.
+**Important**: Do not use any library to evaluate the polynomial.
 
 ### Hints
 - Execute the following command to ensure the tests run:
@@ -200,7 +200,7 @@ $ pytest -v -m task4
 8. evaluate Res to obtain the set intersection of A and B
 
 
-**Important**: Do not use any library to calculate the product of two polynomials.
+**Important**: Do not use any library to calculate the private intersection of the sets.
 
 ### Hints
 - Execute the following command to ensure the tests run:
