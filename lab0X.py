@@ -1,6 +1,6 @@
 import random
 
-BIT_SIZE = 15
+BIT_SIZE = 4
 
 
 # Generates a random polynomial
