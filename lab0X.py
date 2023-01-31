@@ -6,7 +6,7 @@ BIT_SIZE = 4
 # Generates a random polynomial
 def gen_random_poly(degree, m):
     res = []
-    for i in range(0, degree):
+    for i in range(0, degree + 1):
         c = random.randint(0, 2**BIT_SIZE)
         res.append(c % m)
     return res
