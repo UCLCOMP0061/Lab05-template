@@ -7,7 +7,7 @@ BIT_SIZE = 15
 def gen_random_poly(degree, m):
     res = []
     for i in range(1, degree + 1):
-        res.append(random.randint(0, 2 ** BIT_SIZE))
+        res.append(random.randint(0, 2**BIT_SIZE))
     for j in range(0, len(res)):
         res[j] = res[j] % m
     return res
@@ -39,7 +39,7 @@ def polynomial_evaluation(P, a, m):
 #           Their product is equal to [10, 2, 7, 9] and can be calculated as:
 #           [10, 0, 7, 8] + [0, 2, 0, 1].
 #           Remember to work modulus m in your implementation!
-#       *** Important: Do not use any library to calculate the sum of two polynomials.
+#       *** Important: Do not use any library to calculate the sum of the two polynomials.
 
 def polynomial_addition(P_1, P_2, m):
     # TODO: ADD CODE HERE
@@ -68,6 +68,7 @@ def polynomial_multiplication(P_1, P_2, m):
 # TASK 4 -- Represent the set S of n elements as a polynomial P, such that the roots of P are the elements of the set S
 #           Return the coefficients of the polynomial as a vector of coefficients modulus m.
 #           For example, when S = {2, 3}, then P = (x-2)*(x-3) = x^2 - 5 * x + 6 and the function returns [1, -5, 6]
+#           Remember to work modulus m in your implementation!
 #           Hint: You can make use of your `polynomial_multiplication` function.
 def polynomial_representation(S, m):
     # TODO: ADD CODE HERE
@@ -80,6 +81,7 @@ def polynomial_representation(S, m):
 #           and Bob, using polynomial representation modulus m.
 #           Assume set A belongs to Alice and set B belongs to Bob.
 #           Using the functions you created in the previous tasks you will need to follow these steps:
+#            * Assume set A belongs to Alice and set B belongs to Bob.
 #               1 - represent A as a polynomial, say P_1
 #               2 - generate a random polynomial, say R_1, with the same degree as P_1
 #               3 - compute the product of P_1 and R_1 (i.e., P_1 * R_1)
