@@ -35,7 +35,7 @@ def polynomial_evaluation(P, a, m):
 #           (10 * x^3 + 7 * x + 8)+(2 * x^2 + 1) = 10 * x^3 + 2 * x^2 + 7 * x + 9
 #           Just like in Task 1, we define each polynomial as a vector that contains the polynomial's coefficients.
 #           The polynomials above can be represented as P_1 = [10, 0, 7, 8] and P_2 = [2, 0, 1].
-#           Their product is equal to [10, 2, 7, 9] and can be calculated as:
+#           Their sum is equal to [10, 2, 7, 9] and can be calculated as:
 #           [10, 0, 7, 8] + [0, 2, 0, 1].
 #           Remember to work modulus m in your implementation!
 #       *** Important: Do not use any library to calculate the sum of the two polynomials.
@@ -52,8 +52,7 @@ def polynomial_addition(P_1, P_2, m):
 #           (10 * x^3 + 7 * x + 8)*(2 * x^2 + 1) = 20 * x^5 + 24 * x^3 + 16 * x^2 + 7 * x + 8.
 #           Just like in Task 1, we define each polynomial as a vector that contains the polynomial's coefficients.
 #           The polynomials above can be represented as P_1 = [10, 0, 7, 8] and P_2 = [2, 0, 1].
-#           Their product is equal to [20, 0, 24, 16, 7, 8] and can be calculated as:
-#           2 * [10, 0, 7, 8, 0, 0] + 0 * [0, 10, 0, 7, 8, 0] + 1 * [0, 0, 10, 0, 7, 8].
+#           Their product is equal to [20, 0, 24, 16, 7, 8].
 #           Remember to work modulus m in your implementation!
 #       *** Important: Do not use any library to calculate the product of two polynomials.
 

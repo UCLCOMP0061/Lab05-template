@@ -3,7 +3,12 @@
 
 # COMP0061 -- Privacy Enhancing Technologies -- Lab 0X
 
-This lab will introduce the basics of working with polynomials and their use for private set intersection
+This lab will introduce the basics of working with polynomials and their use for private set intersection.
+
+This lab requires a basic understanding of polynomials: their representation, degree, evaluation, addition, and 
+multiplication.
+If you are unfamiliar with these concepts, we recommend you read the following Wikipedia article 
+[Wikipedia: Polynomial](https://en.wikipedia.org/wiki/Polynomial), especially the section on Arithmetic.
 
 ### Structure of Labs
 The structure of all the labs will be similar: two Python files will be provided. 
