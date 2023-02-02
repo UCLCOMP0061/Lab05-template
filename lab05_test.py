@@ -1,5 +1,5 @@
 import pytest
-from lab0X import *
+from lab05 import *
 
 modulus = 8683317618811886495518194401279999999
 
