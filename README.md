@@ -1,7 +1,7 @@
 [<img alt="points bar" align="right" height="36" src="../../blob/badges/.github/badges/points-bar.svg" />
 <img alt="Workflow status" align="right" height="30" src="../../workflows/Autograding/badge.svg?branch=main" />](../../actions/workflows/classroom.yml)
 
-# COMP0061 -- Privacy Enhancing Technologies -- Lab 0X
+# COMP0061 -- Privacy Enhancing Technologies -- Lab 05
 
 This lab will introduce the basics of working with polynomials and their use for private set intersection.
 
@@ -106,7 +106,7 @@ time you push any changes to the `main` branch of your GitHub repository.
 The latest score from automarking should be shown in the Readme file.
 To see the test runs, look at the Actions tab in your GitHub repository.
 
-Make sure the submitted `lab0X.py` file at least satisfies the tests, without the need for any external dependency 
+Make sure the submitted `lab05.py` file at least satisfies the tests, without the need for any external dependency 
 except the Python standard libraries. 
 Only submissions prior to the GitHub Classroom deadline will be marked, so make sure you push your code in time.
 
@@ -114,7 +114,7 @@ Only submissions prior to the GitHub Classroom deadline will be marked, so make 
 To re-iterate, the tests passing is a necessary but not sufficient condition to fulfill each task.
 All submissions will be checked by TAs for correctness and your final marks are based on their assessment of your work.  
 For full marks, make sure you have fully filled in any sections marked with `TODO` comments, including answering any
-questions in the comments of the `lab0X.py`.
+questions in the comments of the `lab05.py`.
 
 ## TASK 1 -- Evaluating a polynomial. \[1 point\]
 > Evaluate a polynomial P at value a modulus m.
@@ -159,8 +159,7 @@ $ pytest -v -m task2
 > (10 * x^3 + 7 * x + 8)*(2 * x^2 + 1) = 20 * x^5 + 24 * x^3 + 16 * x^2 + 7 * x + 8.
 > Just like in Task 1, we define each polynomial as a vector that contains the polynomial's coefficients.
 > The polynomials above can be represented as P_1 = [10, 0, 7, 8] and P_2 = [2, 0, 1].
-> Their product is equal to [20, 0, 24, 16, 7, 8] and can be calculated as:
-> 2 * [10, 0, 7, 8, 0, 0] + 0 * [0, 10, 0, 7, 8, 0] + 1 * [0, 0, 10, 0, 7, 8].
+> Their product is equal to [20, 0, 24, 16, 7, 8].
 
 **Important**: Do not use any library to calculate the product of two polynomials.
 
